@@ -1,0 +1,57 @@
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body
+{
+    margin: 0 60px;
+    
+    
+    background-image: url(/Space_Invasion_Math_Game/img/universe.jpeg);
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+img
+{
+    max-width: 250px;
+ 
+}
+div
+{ 
+    text-align: center;
+}
+#spaceShips
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    color: yellow;
+    font-size: 1.5rem;
+}
+
+/* ----------------------------- */
+#shooter
+{
+    max-width: 200px;
+    padding: 0 10px 30px 10px;
+    position: absolute ;
+    bottom: 0;
+    background-color: black;
+}
+
+#currentStatus
+{
+    position: absolute;
+    bottom: 0;
+}
+ul > li
+{
+    display: inline;
+    color: yellowgreen;
+    font-size: 1rem;
+}
