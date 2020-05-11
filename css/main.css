@@ -6,52 +6,72 @@
 }
 
 body
-{
-    margin: 0 60px;
-    
-    
-    background-image: url(/Space_Invasion_Math_Game/img/universe.jpeg);
-    min-height: 400px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-img
-{
-    max-width: 250px;
- 
-}
-div
 { 
-    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    background-color: #080c15;
+    background-image: url(/Space_Invasion_Math_Game/img/cosmoplanetbackground.jpg);
+    background-repeat: no-repeat no-repeat;
+    background-size: cover;
+    max-height: 100%;
+
 }
+
+/* ----------------------------- */
 #spaceShips
 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    color: yellow;
-    font-size: 1.5rem;
+    justify-items: center;
+}
+
+.ships
+{
+    background-image: url(/Space_Invasion_Math_Game/img/3DSS.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width:175px;
+    height: 125px;
+    font-size: 3rem;
+    font-weight: bolder;
+    padding-top: 10px;
+    color: gold;
+    text-align: center;
 }
 
 /* ----------------------------- */
 #shooter
 {
-    max-width: 200px;
-    padding: 0 10px 30px 10px;
+    background-image: url(/Space_Invasion_Math_Game/img/Gun.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width:80px;
+    height: 150px;
+    font-size: 2.8rem;
+    font-weight: bolder;
+    color: #21d8df;
     position: absolute ;
-    bottom: 0;
-    background-color: black;
+    bottom: 0px;    
 }
 
-#currentStatus
+/* ----------------------------- */
+#currentStatus /* Footer */
 {
+    background-color: teal;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 3fr;
+    align-content: center;
     position: absolute;
     bottom: 0;
+    border-style: double;
+    min-width: 100vw;
 }
-ul > li
+
+#currentStatus > div
 {
-    display: inline;
-    color: yellowgreen;
-    font-size: 1rem;
+    padding: 0px 10px;
+    color: black;
+    font-size: 1.5rem;
+    text-align: center;
 }
+
+/* ----------------------------- */
