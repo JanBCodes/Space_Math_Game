@@ -1,3 +1,4 @@
+
 *
 {
     margin:0;
@@ -31,7 +32,7 @@ body
     background-size: 100%;
     width:175px;
     height: 125px;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bolder;
     padding-top: 10px;
     color: gold;
@@ -46,7 +47,7 @@ body
     background-size: 100%;
     width:80px;
     height: 150px;
-    font-size: 2.8rem;
+    font-size: 2rem;
     font-weight: bolder;
     color: #21d8df;
     position: absolute ;
@@ -75,3 +76,26 @@ body
 }
 
 /* ----------------------------- */
+/*  Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+
+    display: none;
+    
+}
+
+
+    /* Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) and (max-width: 767.98px) { ... }
+
+    /*Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) and (max-width: 991.98px) { ... }
+
+    /*  Large devices (desktops, 992px and up)
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+        
+    }
+
+    @media (max-width: 1240px) {
+
+    }
+    */

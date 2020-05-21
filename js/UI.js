@@ -1,5 +1,3 @@
-import levelOneQuestion from "./Blo.js";
-
 const MainUI=
 {
 
@@ -19,38 +17,36 @@ const MainUI=
         for(let i=0; i<=this.allSShips.length; i++)
         {
             this.allSShips[i].style.marginTop=`${marginAdded}px`
-
+           
             if(i==this.allSShips.length)
             {
                 break;
-            }
+            }  
         }
-
     },
 
-    displayQuestions()
+    displayQuestionsandAnswer()
     {
-        firstNum=levelOneQuestion.randomFirstNum;
-        secondNum=levelOneQuestion.randomSecondNum;
+        const answerArray=[]
 
         for(let i=0; i<this.allSShips.length; i++)
         {
-            firstNum=levelOneQuestion.randomFirstNum;
-            secondNum=levelOneQuestion.randomSecondNum;
-
-            this.allSShips[i].innerHTML=`${firstNum} + ${secondNum} & ${i}` ;
+            const firstNum=Math.floor(Math.random() * 25) + 1;
+            const secondNum=Math.floor(Math.random() * 9) + 1;
+            let answer=firstNum+secondNum;
+        
+            this.allSShips[i].innerHTML=`${firstNum} + ${secondNum}`;
 
             if(i==this.allSShips.length)
             {
                 break;
             }
+            answerArray.push(answer);
         }
-    },
 
-    displayAnswer(answer)
-    {
-        this.shooter.innerHTML=`${answer}`;
-        
+        let randomAnswer=Math.floor(Math.random() * 4)
+        this.shooter.innerHTML=`${answerArray[randomAnswer]}`;
+        //console.log(answerArray)
     },
 
     moveShooter(shooterMarginStart)
@@ -61,12 +57,22 @@ const MainUI=
     fireShooter()//!!!!!!!!!! What do I want happen?
     {
         //this.shooter.style.marginLeft=`${marginToMoveBy}px`;
+        /*
+            I want the bullets(picture) to shoot from center of shooter/cannon
+            then validate if the answer is correct
+          
+        */
+
+        
+
+
+
+
     },
 
     addMissed(miss)
     {
         this.missed.innerHTML=`Missed: ${miss}`;
-
     },
 
     addHits(hits)
@@ -76,10 +82,8 @@ const MainUI=
     
     timeTracker(startTimer)
     {
-        this.timer.innerHTML=`Timer: ${startTimer}`;
-        
+        this.timer.innerHTML=`Timer: ${startTimer}`;       
     }
-
 };
 
 export default MainUI;

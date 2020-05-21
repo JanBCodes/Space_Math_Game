@@ -1,12 +1,10 @@
 import MainUI from "./UI.js"
-//import Question from "./Dao.js";
-import levelOneQuestion from "./Blo.js"
+
 
 const app=
 {
     init()//Level One - Addition 90sec
     {   
-        
         //!!!!!!!!!!!!!!!!!!PAUSE()!!!!!!!!!!!!!!!!!!!!!!!!
 
         const time=800;
@@ -22,29 +20,34 @@ const app=
         }
         */
 
-    //-----------------------
+    //-----------------------    
+
+        MainUI.displayQuestionsandAnswer()
+
+        //-----------------------
         let marginTop=0;
+        const marginTopAdded=1;
 
-        let firstNum=levelOneQuestion.randomFirstNum;
-        let secondNum=levelOneQuestion.randomSecondNum;
-        let correctAns=(firstNum+secondNum)
-
-        MainUI.displayQuestions()
-
-        MainUI.displayAnswer(correctAns)
-
-
-        const interalRef= setInterval(function(){
+        const interalRef= setInterval(()=>{
            
-            marginTop+=10;
+            marginTop+=marginTopAdded;
 
             MainUI.moveAllSpaceship(marginTop);
+
+            const shooterRect=MainUI.shooter.getBoundingClientRect();
+            const allShipsRect=MainUI.ship1.getBoundingClientRect();
+
+            if(shooterRect.top > allShipsRect.bottom)
+            {
+                clearInterval(levelOneTimer)
+                clearInterval(interalRef)
+            }
 
         },time);
 
     //-----------------------
-        let timerLevelOne=90;    
-        const levelOneTimer=setInterval(function(){
+        let timerLevelOne=10;    
+        const levelOneTimer=setInterval(()=>{
 
             MainUI.timeTracker(timerLevelOne)
 
@@ -53,6 +56,7 @@ const app=
                 MainUI.timeTracker("Congrats Next Level Awaits!")
                 clearInterval(levelOneTimer)
                 clearInterval(interalRef)
+                //start Level Two
             }
 
             timerLevelOne--;
@@ -60,16 +64,23 @@ const app=
         },1000);
     //-----------------------
         let shooterMarginStart=0;
-        let shooterMarginMoveBy=50;
+        const shooterMarginMoveBy=50;
                
-        document.addEventListener("keydown", function(event){
+        document.addEventListener("keydown", event=>{
 
-            console.log(event.key)
+            if(shooterMarginStart<=50)
+            {
+                shooterMarginStart=50;
+            }
+            else if(shooterMarginStart>=1300)
+            {
+                shooterMarginStart=1300;
+            }
 
             if (event.key=="ArrowLeft")
             {
                 shooterMarginStart-=shooterMarginMoveBy;
-                MainUI.moveShooter(shooterMarginStart)
+                MainUI.moveShooter(shooterMarginStart);
             }
             else if(event.key=="ArrowRight")
             {
@@ -78,9 +89,11 @@ const app=
             }
             else if(event.key=="ArrowUp" || event.key==" ")
             {
-                MainUI.fireShooter()
+                MainUI.fireShooter();
             }
         });
+
+        
     },//end of init
 
 };
