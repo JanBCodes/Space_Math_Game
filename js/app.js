@@ -72,9 +72,9 @@ const app=
             {
                 shooterMarginStart=50;
             }
-            else if(shooterMarginStart>=1300)
+            else if(shooterMarginStart>=900)
             {
-                shooterMarginStart=1300;
+                shooterMarginStart=850;
             }
 
             if (event.key=="ArrowLeft")
@@ -89,6 +89,12 @@ const app=
             }
             else if(event.key=="ArrowUp" || event.key==" ")
             {
+                setInterval(()=> {
+                
+                    MainUI.fireShooter();
+
+                },500)
+
                 MainUI.fireShooter();
             }
         });

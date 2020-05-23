@@ -11,6 +11,7 @@ const MainUI=
         timer   :   document.querySelector("#timer"),
         missed  :   document.querySelector("#miss"),
         hits    :   document.querySelector("#hit"),
+        firePin :   document.querySelector("span"),
 
     moveAllSpaceship(marginAdded)
     {
@@ -60,14 +61,12 @@ const MainUI=
         /*
             I want the bullets(picture) to shoot from center of shooter/cannon
             then validate if the answer is correct
-          
-        */
 
+            thinking to group create dynamically elements for the shooter bullets.
         
-
-
-
-
+            */
+        this.firePin.style.backgroundImage=`url(/Space_Invasion_Math_Game/img/shotsfired.png)`
+        
     },
 
     addMissed(miss)
