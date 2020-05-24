@@ -89,19 +89,59 @@ const app=
             }
             else if(event.key=="ArrowUp" || event.key==" ")
             {
-                setInterval(()=> {
+
+                let position=150  
+                const bulletTimer=setInterval(()=> {
+                    
+                    MainUI.fireShooter(position);
+                    position+=50;
+                    //MainUI.firePin.style.backgroundImage=`0`
+
+                    if(false)
+                    {
+                        clearInterval(bulletTimer)
+                    }
+                },50);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                /*
+                const div=document.createElement("div");
+                div.setAttribute("id","initialShot")
+                div.appendChild(section);
+                MainUI.firePin.appendChild(div);
+                //MainUI.firePin.appendChild
+                //MainUI.travelPin.remove()*/
+                    
+            }//end of else if ArrowUp Keycode
                 
-                    MainUI.fireShooter();
-
-                },500)
-
-                MainUI.fireShooter();
-            }
-        });
-
-        
+        });//end of keydown event handler     
     },//end of init
-
 };
 app.init();
 

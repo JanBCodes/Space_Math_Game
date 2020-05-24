@@ -1,6 +1,6 @@
 const MainUI=
 {
-
+    bodyheight  :   document.querySelector("#body"),
     allSShips   :   document.querySelectorAll(".ships"),
         ship1   :   document.querySelector("#ship1"),
         ship2   :   document.querySelector("#ship2"),
@@ -11,7 +11,9 @@ const MainUI=
         timer   :   document.querySelector("#timer"),
         missed  :   document.querySelector("#miss"),
         hits    :   document.querySelector("#hit"),
-        firePin :   document.querySelector("span"),
+        firePin :   document.querySelector("#initialShot"),
+        collide :   document.querySelector("#contactWithSship"),
+        section :   document.querySelector("section"),
 
     moveAllSpaceship(marginAdded)
     {
@@ -22,7 +24,7 @@ const MainUI=
             if(i==this.allSShips.length)
             {
                 break;
-            }  
+            }
         }
     },
 
@@ -45,28 +47,24 @@ const MainUI=
             answerArray.push(answer);
         }
 
-        let randomAnswer=Math.floor(Math.random() * 4)
-        this.shooter.innerHTML=`${answerArray[randomAnswer]}`;
+        let randomAnswer=Math.floor(Math.random() * 4);
+        this.shooter.innerHTML=`${answerArray[randomAnswer]}`
+ 
         //console.log(answerArray)
     },
 
     moveShooter(shooterMarginStart)
     {
         this.shooter.style.marginLeft=`${shooterMarginStart}px`;
+        this.firePin.style.marginLeft=`${shooterMarginStart}px`;
+        this.travelPin.style.marginLeft=`${shooterMarginStart}px`;
     },
 
-    fireShooter()//!!!!!!!!!! What do I want happen?
+    fireShooter(position)//!!!!!!!!!! What do I want happen?
     {
-        //this.shooter.style.marginLeft=`${marginToMoveBy}px`;
-        /*
-            I want the bullets(picture) to shoot from center of shooter/cannon
-            then validate if the answer is correct
 
-            thinking to group create dynamically elements for the shooter bullets.
-        
-            */
-        this.firePin.style.backgroundImage=`url(/Space_Invasion_Math_Game/img/shotsfired.png)`
-        
+        this.firePin.style.backgroundImage=`url(/Space_Invasion_Math_Game/img/singleShotFired.png)`;
+        this.firePin.style.bottom=`${position}px`
     },
 
     addMissed(miss)

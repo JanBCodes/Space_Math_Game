@@ -8,7 +8,7 @@
         <script src="/Space_Invasion_Math_Game/js/app.js" type="module"></script> 
         <title>Space Invasion - Main</title>
     </head>
-    <body>
+    <body id="body">
         <main id="spaceShips">
             <div id="ship1" class="ships"></div>
             <div id="ship2" class="ships"></div>
@@ -17,9 +17,12 @@
             <div id="ship5" class="ships"></div>
         </main>
         
-        <span></span>
+        <section>
+            <div id="initialShot"></div>
+            <div id="contactWithSship"></div>
+        </section>
+
         <div id="shooter"></div>
-        
         <footer id="currentStatus">
             <div id="timer">Timer: 90</div>
             <div id="hit">Hits: 0</div>

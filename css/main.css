@@ -4,6 +4,7 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+    
 }
 
 body
@@ -13,7 +14,9 @@ body
     background-image: url(/Space_Invasion_Math_Game/img/cosmoplanetbackground.jpg);
     background-repeat: no-repeat no-repeat;
     background-size: cover;
-    max-height: 100%;
+    
+    width: 1024px;
+    justify-self: center;
 
 }
 
@@ -32,7 +35,7 @@ body
     background-size: 100%;
     width:175px;
     height: 125px;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bolder;
     padding-top: 10px;
     color: gold;
@@ -47,12 +50,24 @@ body
     background-size: 100%;
     width:80px;
     height: 150px;
-    font-size: 2rem;
+    font-size: 60px;
     font-weight: bolder;
     color: #21d8df;
     position: absolute ;
     bottom: 0px;    
+    justify-items: center;
 }
+
+#initialShot
+{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55px;
+    height: 60px;
+    position: absolute ;
+    bottom: 150px; 
+}
+
 
 /* ----------------------------- */
 #currentStatus /* Footer */
@@ -76,13 +91,10 @@ body
 }
 
 /* ----------------------------- */
-/*  Extra small devices (portrait phones, less than 576px) */
+/*  Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) { 
 
-    
 }
-
-
     /* Small devices (landscape phones, 576px and up)
     @media (min-width: 576px) and (max-width: 767.98px) { ... }
 
