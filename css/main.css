@@ -1,23 +1,20 @@
-
 *
 {
     margin:0;
     padding:0;
-    box-sizing: border-box;
-    
+    box-sizing: border-box;   
 }
 
 body
 { 
     font-family: 'Dancing Script', cursive;
-    background-color: #080c15;
     background-image: url(/Space_Invasion_Math_Game/img/cosmoplanetbackground.jpg);
-    background-repeat: no-repeat no-repeat;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
-    
-    width: 1024px;
-    justify-self: center;
-
+    background-color: #464646;
+   
 }
 
 /* ----------------------------- */
@@ -43,7 +40,7 @@ body
 }
 
 /* ----------------------------- */
-#shooter
+#cannon
 {
     background-image: url(/Space_Invasion_Math_Game/img/Gun.png);
     background-repeat: no-repeat;
@@ -55,7 +52,8 @@ body
     color: #21d8df;
     position: absolute ;
     bottom: 0px;    
-    justify-items: center;
+    justify-self: center;
+    text-align: center;
 }
 
 #initialShot
@@ -64,10 +62,17 @@ body
     background-repeat: no-repeat;
     width: 55px;
     height: 60px;
-    position: absolute ;
     bottom: 150px; 
 }
-
+#contactWithSship
+{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 125px;
+    height: 175px;
+   
+    justify-items: left;
+}
 
 /* ----------------------------- */
 #currentStatus /* Footer */
@@ -79,7 +84,7 @@ body
     position: absolute;
     bottom: 0;
     border-style: double;
-    min-width: 100vw;
+  
 }
 
 #currentStatus > div
@@ -93,6 +98,9 @@ body
 /* ----------------------------- */
 /*  Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) { 
+
+
+ min-width: 100vw;
 
 }
     /* Small devices (landscape phones, 576px and up)
