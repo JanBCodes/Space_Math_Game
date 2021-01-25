@@ -16,18 +16,21 @@ body
     background-color: #464646;
     color: white;
 }
+
 h1
 {
     margin-top: 30px;
     font-size: 4rem; 
     text-align: center;
 }
+
 main
 {
     font-size: 2rem; 
     text-align: center;
     color: yellow;
 }
+
 footer
 {
     margin-top: 20px;

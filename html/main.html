@@ -5,29 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/Space_Invasion_Math_Game/css/main.css">
         <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
-        <script src="/Space_Invasion_Math_Game/js/main/app.js" type="module"></script> 
+        <script src="/Space_Invasion_Math_Game/js/main/app.js" type="module"> </script> 
         <title>Space Invasion - Main</title>
     </head>
     <body id="body">
-        <main id="spaceShips">
-            <div id="ship1" class="ships"></div>
-            <div id="ship2" class="ships"></div>
-            <div id="ship3" class="ships"></div>
-            <div id="ship4" class="ships"></div>
-            <div id="ship5" class="ships"></div>
+
+        <main id="spaceShipsContainer">
+            <div id="ship1" class="ships"> </div>
+            <div id="ship2" class="ships"> </div>
+            <div id="ship3" class="ships"> </div>
+            <div id="ship4" class="ships"> </div>
+            <div id="ship5" class="ships"> </div>
         </main>
-        
-        <section>
-            <div id="initialShot"></div>
-            <div id="contactWithSship"></div>
+              
+        <div id="cannonContainer">
+            <div id="cannon"> </div>
+        </div>
+    
+        <section id="actionContainer">
+            <div id="initialShot"> </div>
+            <div id="contactWithSship"> </div>
         </section>
-      
-        <div id="cannon"></div>
-        <footer id="currentStatus">
-            <div id="timer">Timer: 90</div>
-            <div id="hit">Hits: 0</div>
-            <div id="miss">Missed: 0</div>
-            <div>Developed by: JanBCodes</div>
+
+        <footer id="currentStats">
+            <div id="timer"> Timer: 90 </div>
+            <div id="hit"> Hits: 0 </div>
+            <div id="miss"> Misses: 0 </div>
+            <div> Developed by: JanBCodes </div>
         </footer>
+
     </body>
 </html>

@@ -13,7 +13,6 @@ function first()
     viewRulesButton.addEventListener("click",() => {
 
         rulesDisplay.innerHTML="Shoot down the aliens before they get to Earth.<br> You have to 90secs per level.<br> The First Level is Addition and the Second Level is Substraction.<br> Good luck!"
-
     })
 }
 first();
