@@ -1,18 +1,18 @@
 import MainUI from "./UI.js"
 
-const app=
+const app =
 {
-    init()//Level One - Addition 90sec
+    init() //Level One - Addition 90sec
     {   
         let levelSelected = () =>
         {
-            let levelSelected=sessionStorage.getItem("Level")
+            let levelSelected = sessionStorage.getItem("Level")
 
-            if(levelSelected=="Hard")
+            if (levelSelected == "Hard")
             {
                 return 800;
             }
-            else if(levelSelected=="Easy")
+            else if (levelSelected == "Easy")
             {
                 return 1200;
             }
@@ -21,252 +21,203 @@ const app=
         /* ***** Load Dom Content Loader !!!!!!!!!!!!!!!!!! fix 
         */
 
-    //-----------------------    
+// *********************************************************************************************************************************
 
-        let newQuesandAnswer=MainUI.displayQuestionsandAnswer() //returns answer index or sShip index
-        console.log(`Correct Ship = ` + `${newQuesandAnswer+1}`);
+
+        let newQuesandAnswer = MainUI.displayQuestionsandAnswer() //returns answer index or sShip index
+        console.log(`Correct Ship Slot (index + 1) = ` + `${newQuesandAnswer+1}`);
     
-        //const moveShipTimer=MainUI.moveAllSpaceship(0) // Ships start Moving
-    //-----------------------
+        // MainUI.moveAllSpaceship(0,15) // Ships start Moving
+// *********************************************************************************************************************************
 
-/*         
-        let mainRect=MainUI.main.getBoundingClientRect()
+      
+/*  
+        // let mainRect=MainUI.main.getBoundingClientRect()
 
-        let marginTop=0;
-        const marginTopAdded=15;
-
+        // let marginTop=0;
+        // const marginTopAdded=15;
           
-          
-            MainUI.removeExplosion();
-            let cannonRec=MainUI.cannon.getBoundingClientRect();
-            let mainRect=MainUI.main.getBoundingClientRect(); 
+           MainUI.removeExplosion();
+            let cannonRec = MainUI.cannon.getBoundingClientRect();
+            let mainRect = MainUI.main.getBoundingClientRect(); 
 
-            //console.log(cannonRec.top)
-            //console.log(mainRect.bottom)
+        //     //console.log(cannonRec.top)
+        //     //console.log(mainRect.bottom)
 
-            //marginTop+=marginTopAdded;
+        //     //marginTop+=marginTopAdded;
 
-            if(cannonRec.top<=mainRect.bottom)
+            if (cannonRec.top <= mainRect.bottom)
             {
                  //Game Over  fix // wrong rec values
                 clearInterval(levelOneTimer)
                 clearInterval(moveShipTimer)
                 MainUI.timeTracker("Game Over!")
-            }     */    
-            
+            }    
+ */
 
+// *********************************************************************************************************************************
 
-    //-----------------------
-        let timerLevelOne=90;    //fix for Level 2 60sec
+        let timerLevelOne = 5;    //fix for Level 2 60sec
 
-        const levelOneTimer=setInterval(()=>{
+        const levelOneTimer = setInterval(()=>{
 
-            MainUI.timeTracker(timerLevelOne)
+            MainUI.timeTracker (timerLevelOne )
 
-                if(timerLevelOne<=0)
+                if( timerLevelOne <= 0)
                 {                
-                    MainUI.timeTracker("Congrats Next Level Awaits!")
-                    clearInterval(levelOneTimer)//stops timer at 0
-                    clearInterval(moveShipTimer)//stops ships from moving
+                    // console.log("Enter 0 Time Tracker")
+                    MainUI.timeTracker( "Congrats Next Level Awaits!" )
+                    clearInterval ( levelOneTimer )//stops timer at 0
+
                     //start Level Two //Call level 2 function
                 }
 
-            timerLevelOne--;
+            timerLevelOne -- ;
 
-        },1000);
-    //-----------------------
+        }, 1000);
+// *********************************************************************************************************************************
 
-
-// --------------------------------------------
-
+// *********************************************************************************************************************************
 
         let gridColumnStart = 3; 
         const moveGridColumn = 1;
 
         document.addEventListener("keydown", event=>{
 
-            if (event.key == "ArrowLeft" && gridColumnStart != 0)
+            /***********************************************************************************
+            Restrict Movement of Ship Slots. Only 1 2 3 4 5 Slots Available
+            ***********************************************************************************/
+
+            if( gridColumnStart == 0)
+            {
+                gridColumnStart = 1;
+            }
+
+            if( gridColumnStart == 6)
+            {
+                gridColumnStart = 5;
+            }
+
+        // *********************************************************************************************************************************
+            if (event.key == "ArrowLeft" && gridColumnStart >= 1)
             {
                 gridColumnStart -= moveGridColumn;
 
                 MainUI.moveCannon(gridColumnStart);
             }
 
-            else if (event.key == "ArrowRight" && gridColumnStart != 5)
+            else if (event.key == "ArrowRight" && gridColumnStart < 5)
             {
                 gridColumnStart += moveGridColumn;
-                MainUI.moveCannon(gridColumnStart)
+                MainUI.moveCannon( gridColumnStart )
             }
 
-            else if (event.key == "ArrowUp" || event.key==" ")
+            else if (event.key == "ArrowUp" || event.key == " ")
             {
-                let bulletPosition = 20
+
+            /***********************************************************************************
+             What Happens When I Fire Cannon? 
+                Bullet Travels to Ship
+                Bullet Disappears Upon Impact with Ship
+                Upon Impact :
+                    Correct Answer
+                        - Alien is Expelled if Answer is Correct
+                        - New Questions Generate
+                        - Ships Reset to Starting Position
+                        - One Point is Added to Hit Counter
+
+                    Wrong Answer
+                        - Ship Shot Disappears
+                        - New Questions Generate
+                        - One Point is Added to Miss Counter
+
+            ***********************************************************************************/
+                let bulletPosition = 0;
                 
                 const missleColumnGrid = gridColumnStart;
 
-                let bulletTimer = setInterval(()=> {
+                let bulletTimer = setInterval(() => {
 
                     let spaceShipBottomRec = MainUI.main.getBoundingClientRect(); //must stay in setInterval to be recalculated with every loop
                     let bulletRec = MainUI.bullet.getBoundingClientRect(); //must stay in setInterval to be recalculated with every loop
+                    let hits = 0;
+                    let misses = 0;
 
                     MainUI.fireCannon(missleColumnGrid, bulletPosition)
 
+
                     if (bulletRec.bottom <= spaceShipBottomRec.bottom)
                     {
-                        clearInterval(bulletTimer)//stop bullet from travelling past Spaceships(MAIN)
+                        /***********************************************************************************
+                        Validation the Correct Answer to Ship Selected via Cannon Grid == Answer Grid
+                        ***********************************************************************************/
+
+                        /* Fix Here*/              
+                        if ( missleColumnGrid == newQuesandAnswer+1) // Correct Answer
+                        {
+                            // console.log (`Correct Answer chosen`);
+                            hits++;
+                            console.log(hits)
+                            MainUI.addHits(hits)
+
+
+                       }
+                        else  // Wrong Answer
+                        {
+                            // console.log (`Wrong Answer chosen`);
+                            misses++;
+                            MainUI.addMissed(misses)
+                        }
+
+                    //    console.log (`**Next Correct Ship Slot= ` + `${newQuesandAnswer+1}`);
+
+                       /***********************************************************************************
+                        Animation Control of Firing Bullets
+                        ***********************************************************************************/
+                        clearInterval (bulletTimer)//stop bullet from travelling past Spaceships(MAIN)
 
                         MainUI.removeBullet();//make bullet upon collision disappear+
+
+                        MainUI.impact( bulletPosition, missleColumnGrid); //replace bullet with exploding alien [IF CORRECT!] fix
+
+                        setTimeout(() => {
+                            MainUI.removeExplosion()
+                        }, 150)
+
+                        newQuesandAnswer = MainUI.displayQuestionsandAnswer() 
+
+                        // console.log (`Missle Column Grid = ` + `${missleColumnGrid}`);
+                        console.log (`Answer Slot (index + 1) = ` + `${newQuesandAnswer+1}`);
+
+                    } 
+
+                    bulletPosition+=35;
+
+                }, 20);
+
+                /*  Calculate if collision with Spaceship
+                        then Remove Bullet - done
+                        show Explosion - done
+
+                    If Correct Answer
+                        Regenerate SShips Positions to Start & New Questions
+                        Update Hits
+
+                    If Wrong Answer
+                        Regenerate Questions
+                        Update Misses 
                         
-                        MainUI.impact(spaceShipBottomRec.top, missleColumnGrid); //replace bullet with exploding alien [IF CORRECT!] fix
+                    Calculate if Collision with Cannon   - GAME OVER  
 
+                    If Successful for Level 2 - Call Level Two Function
 
-
-    
-                    }
-
-
-
-
-
-                    //MainUI.removeExplosion();//remove exploded alien  
+                    Add Level Two Rules
                         
-                    console.log("Bullet Bottom    " + `${bulletRec.bottom}`) // --
-                    console.log("spaceShipsContainer     "  +`${spaceShipBottomRec.bottom}`) //++
-
-                    bulletPosition+=75;
-
-                }, 100)
-
-/*  Calculate if collision with Spaceship
-        then Remove Bullet
-        show Explosion
-
-    If Correct Answer
-        Regenerate SShips Positions & New Questions
-        Update Hits
-
-    If Wrong Answer
-        Regenerate Questions
-        Update Misses 
-        
-    Calculate if Collision with Cannon   - GAME OVER  
-
-    If Successful for Level 2 - Call Level Two Function
-
-    Add Level Two Rules
-        
-*/
-                
-
-            }
+                */
+            } //End of Else If (Arrow Up)
 
         });
-
-            // else if(event.key == "ArrowUp" || event.key==" ")
-            // {
-            //     let bulletPosition=150;
-            //     let centerBullet=MainUI.cannon.getBoundingClientRect();// to set bullet center of cannon
-
-            //     let bulletTimer=setInterval(()=> { 
-
-            //         let mainRect=MainUI.main.getBoundingClientRect();//must stay in setInterval to be recalculated with every loop
-            //         let bulletRec=MainUI.bullet.getBoundingClientRect();//must stay in setInterval to be recalculated with every loop
-            //         let ship1Rec=MainUI.ship1.getBoundingClientRect()
-            //         let ship2Rec=MainUI.ship2.getBoundingClientRect()
-            //         let ship3Rec=MainUI.ship3.getBoundingClientRect()
-            //         let ship4Rec=MainUI.ship4.getBoundingClientRect()
-            //         let ship5Rec=MainUI.ship3.getBoundingClientRect()
-
-
-            //         MainUI.removeExplosion();//remove exploded alien  
-            //         MainUI.fireCannon(bulletPosition,centerBullet.left+10);
-                
-            //         //console.log("Bullet Bottom" + `${bulletRec.bottom}`)
-            //         //console.log(mainRect.bottom)
-
-            //         if(bulletRec.bottom <= mainRect.bottom)// && VALIDATION OF ARRAY CHOSEN fix
-            //         {
-            //             let miss=0
-            //             let hits=0
-            //             clearInterval(bulletTimer)//stop bullet from travelling past Spaceships(MAIN)
-            //             MainUI.removeBullet();//make bullet upon collision disappear
-                        
-            //             //MainUI.impact(bulletRec.top,centerBullet.left-10); //replace bullet with exploding alien [IF CORRECT!] fix
-
-            //             //!!_--------------- Validating Answer to cannon to space ship
-
-                    //     for(let i=0; i <= MainUI.allSShips.length; i++)
-                    //     {   
-                    //         console.log(`Correct Ship = ` + `${NewQuesandAnswer+1}`)
-                    
-                    //         //let bulletRec=MainUI.bullet.getBoundingClientRect()
-                    //         //console.log(MainUI.allSShips.length)
-                    //         //console.log(NewQuesandAnswer)
-                            
-                    //         if(bulletRec.right <= ship1Rec.right && bulletRec.left >= ship1Rec.left && NewQuesandAnswer==`${i}`)
-                    //         {
-                    //             //new ques & ans plus 
-                    //             MainUI.impact(ship1Rec.top,centerBullet.left-10)
-                    //             MainUI.allSShips[i].bottom 
-                    //             MainUI.addHits(hits+=1)
-                    //             // MainUI.moveAllSpaceship()
-                    //             MainUI.displayQuestionsandAnswer()
-                                
-                                
-                    //         }
-                    //         else if(bulletRec.right<=ship2Rec.right && bulletRec.left>=ship2Rec.left && NewQuesandAnswer==`${i}`)
-                    //         {
-                    //             MainUI.impact(bulletRec.top,centerBullet.left-10)
-                    //             MainUI.removeShip(NewQuesandAnswer)
-                                
-                    //             MainUI.addHits(hits+=1)
-                    //             // MainUI.moveAllSpaceship()
-                    //             MainUI.displayQuestionsandAnswer()
-                                
-                    //         }
-                    //         else if(bulletRec.right<=ship3Rec.right && bulletRec.left>=ship3Rec.left && NewQuesandAnswer==`${i}`)
-                    //         {
-                    //             MainUI.removeShip(NewQuesandAnswer)
-                    //             MainUI.impact(bulletRec.top,centerBullet.left-10)
-                    //             MainUI.addHits(hits+=1)
-                    //             // MainUI.moveAllSpaceship()
-                    //             MainUI.displayQuestionsandAnswer()
-                                
-                    //         }
-                    //         else if(bulletRec.right<=ship4Rec.right && bulletRec.left>=ship4Rec.left && NewQuesandAnswer==`${i}`)
-                    //         {
-                    //             MainUI.removeShip(NewQuesandAnswer)
-                    //             MainUI.impact(bulletRec.top,centerBullet.left-10)
-                    //             MainUI.addHits(hits+=1)
-                    //             // MainUI.moveAllSpaceship()
-                    //             MainUI.displayQuestionsandAnswer()
-                                
-                    //         }
-                    //         else if(bulletRec.right<=ship5Rec.right && bulletRec.left>=ship5Rec.left && NewQuesandAnswer==`${i}`)
-                    //         {
-                    //             MainUI.removeShip(NewQuesandAnswer)
-                    //             MainUI.impact(bulletRec.top,centerBullet.left-10)
-                    //             MainUI.addHits(hits+=1)
-                    //             // MainUI.moveAllSpaceship()
-                    //             MainUI.displayQuestionsandAnswer()
-                    //         }
-                    //         // else
-                    //         // {
-                    //         //     MainUI.displayQuestionsandAnswer()
-                    //         //     MainUI.addMissed(miss+=1)
-                    //         // }
-                            
-
-                    //     }//end of for loop
-
-                    // } //end of If 
-
-            //         bulletPosition+=50;
-            // // },20) // end of Bullet Timer 
-
-
-            // }//end of else if/ ArrowUp Keycode
-        // });//end of keydown event handler     
+    
     },//end of init
 };
 app.init();

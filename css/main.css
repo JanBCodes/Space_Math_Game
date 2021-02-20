@@ -72,29 +72,28 @@ body
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-items: center;
     width: 100vw;
-    bottom: 150px;
     position: absolute;
+    bottom: 0px;  
 }
 
 #initialShot
-{
+{   
+    /* background-image: url(/Space_Invasion_Math_Game/img/missile.png); */
     background-size: 100%;
     background-repeat: no-repeat;
     width: 55px;
     height: 60px;
     position: relative;
-    grid-column: 2;
+    bottom: 0px;
 }
 
 #contactWithSship
 {
     background-size: 100%;
     background-repeat: no-repeat;
-    width: 125px;
-    height: 175px;
-    position: relative;
-    grid-column: 2;
-    bottom: 0px;
+    width: 200px;
+    min-height: 300px;
+    justify-items: center;
 }
 
 /* ----------------------------- */

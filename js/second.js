@@ -1,4 +1,4 @@
-function second()
+second = () =>
 {
     const playerName=document.querySelector("input")
     const easy=document.querySelector("#easy")

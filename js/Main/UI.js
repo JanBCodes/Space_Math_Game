@@ -1,4 +1,4 @@
-const MainUI=
+const MainUI =
 {
     bodyheight  :   document.querySelector("#body"),
     allSShips   :   document.querySelectorAll(".ships"),
@@ -16,36 +16,37 @@ const MainUI=
         collide :   document.querySelector("#contactWithSship"),
         section :   document.querySelector("section"),
 
-    moveAllSpaceship(counter)
+    moveAllSpaceship(counter, addBy)
     {
-        setInterval(function(){
-            counter+=15
-            ship1.style.marginTop=(`${counter}px`);
+
+        setInterval(() => {
+            counter += addBy
+            ship1.style.marginTop = (`${counter}px`)
         },2000);
     
-        setInterval(function(){
-            ship2.style.marginTop=(`${counter}px`)
+        setInterval(() => {
+            ship2.style.marginTop = (`${counter}px`)
         },1800);
     
-        setInterval(function(){
-            ship3.style.marginTop=(`${counter}px`)
+        setInterval(() => {
+            ship3.style.marginTop = (`${counter}px`)
         },2500);
 
-        setInterval(function(){
-            ship4.style.marginTop=(`${counter}px`)
+        setInterval(() => {
+            ship4.style.marginTop = (`${counter}px`)
         },2200);
     
-        setInterval(function(){
-            ship5.style.marginTop=(`${counter}px`)
-        },2350);
-
+        setInterval(() => {
+            ship5.style.marginTop = (`${counter}px`)
+        },2350);  
+           
     },
 
     displayQuestionsandAnswer()
     {
-        let answerArray=[]
+        let answerArray = []
 
-        for(let i=0; i < this.allSShips.length; i++)
+        for(let i = 0; i < this.allSShips.length; i++)
         {   
             const firstNum = Math.floor(Math.random() * 25) + 1;
             const secondNum = Math.floor(Math.random() * 9) + 1;
@@ -57,7 +58,7 @@ const MainUI=
             {
                 break;
             }
-            answerArray.push(answer);
+            answerArray.push (answer);
         }
 
         const randomAnswer = Math.floor(Math.random() * 4);
@@ -89,40 +90,38 @@ const MainUI=
     removeBullet()
     {
         this.bullet.style.backgroundImage = `none`;
-        this.bullet.style.bottom = `${150}px`;
+        this.bullet.style.bottom = `${0}px`;
     },
   
     impact(position, gridColumn)
     {
         this.collide.style.backgroundImage = `url(/Space_Invasion_Math_Game/img/boom2.png)`;
-        this.collide.style.top = `${position}px`;
+        this.collide.style.position = `relative`;
+        this.collide.style.bottom = `${position}px`;
         this.collide.style.gridColumn = gridColumn;
-        this.collide.style.position = `absolute`;
     },
 
     removeExplosion()
     {
-        this.collide.style.backgroundImage=`none`;
-        //this.collide.style.bottom=`${0}px`;
+        this.collide.style.backgroundImage = `none`;
+        this.collide.style.bottom = `${0}px`;
     },
 
     addMissed(miss)
     {
-        this.missed.innerHTML=`Misses: ${miss}`;
+        this.missed.innerHTML = `Misses: ${miss}`;
     },
 
     addHits(hits)
     {
-        this.hits.innerHTML=`Hits: ${hits}`;
+        this.hits.innerHTML = `Hits: ${hits}`;
     },
     
     timeTracker(startTimer)
     {
-        this.timer.innerHTML=`Timer: ${startTimer}`;       
+        this.timer.innerHTML = `Timer: ${startTimer}`;       
     }
 
 };
-
-
 
 export default MainUI;
