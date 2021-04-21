@@ -63,11 +63,14 @@ div
 
 i
 {
-    border-radius: 5px;
-    padding: 0 10%;
+    border-radius: 20px;
+    background-color: red;
+    padding: 15px 15px;
+    align-self: center;
     justify-self: center;
     font-size: 2rem;
     color: yellow;
+
 }
 
 footer

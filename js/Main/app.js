@@ -4,77 +4,192 @@ const app =
 {
     init() //Level One - Addition 90sec
     {   
+        let levelOn = 120; // Start first Level with 90secs
+        let moveAllSpaceship;
+        let counter = 0;
+        let addBy = 0;
+        let secondsPerTimer;;
+        let gamePlayLevel = 1;
+        
+
+        let newQuesandAnswer = MainUI.displayQuestionsandAnswer(`+`) //returns answer index or sShip index
+        console.log(`Correct Ship Slot (i + 1) = ` + `${newQuesandAnswer+1}`);
+
+/*********************************************************************************************************************************/
+
+/*********************************************************************************************************************************/
+    
         let levelSelected = () =>
         {
-            let levelSelected = sessionStorage.getItem("Level")
+            let playerDifficultySet = sessionStorage.getItem("Level")
 
-            if (levelSelected == "Hard")
+            if (playerDifficultySet == "Hard")
             {
-                return 800;
+                secondsPerTimer = 80
             }
-            else if (levelSelected == "Easy")
+            else if (playerDifficultySet == "Easy")
             {
-                return 1200;
+                secondsPerTimer = 1000
             }
         }
-        //!!!!!!!!!!!!!!!!!!PAUSE()!!!!!!!!!!!!!!!!!!!!!!!!
-        /* ***** Load Dom Content Loader !!!!!!!!!!!!!!!!!! fix 
-        */
+        levelSelected()
 
-// *********************************************************************************************************************************
+/*********************************************************************************************************************************/
+
+/*********************************************************************************************************************************/
+
+        const startMovingAllShipsRandomly = (addBy) =>
+        {
+            moveAllSpaceship = 
+
+                setInterval(() => {
+                    counter += addBy
+                    MainUI.ship1.style.marginTop = (`${counter}px`)
+                },2000);
+
+                setInterval(() => {
+                    MainUI.ship2.style.marginTop = (`${counter}px`)
+                },1800);
+
+                setInterval(() => {
+                    MainUI.ship3.style.marginTop = (`${counter}px`)
+                },2500);
+
+                setInterval(() => {
+                    MainUI.ship4.style.marginTop = (`${counter}px`)
+                },2200);
+
+                setInterval(() => {
+                    MainUI.ship5.style.marginTop = (`${counter}px`)
+                },2350);  
+
+        }
+        startMovingAllShipsRandomly(15)
+
+        const stopAllShip = () => {
+
+            clearInterval(moveAllSpaceship) 
+
+        }
 
 
-        let newQuesandAnswer = MainUI.displayQuestionsandAnswer() //returns answer index or sShip index
-        console.log(`Correct Ship Slot (index + 1) = ` + `${newQuesandAnswer+1}`);
-    
-        // MainUI.moveAllSpaceship(0,15) // Ships start Moving
-// *********************************************************************************************************************************
+/*********************************************************************************************************************************/
 
-      
-/*  
-        // let mainRect=MainUI.main.getBoundingClientRect()
+/*********************************************************************************************************************************/
 
-        // let marginTop=0;
-        // const marginTopAdded=15;
-          
-           MainUI.removeExplosion();
-            let cannonRec = MainUI.cannon.getBoundingClientRect();
-            let mainRect = MainUI.main.getBoundingClientRect(); 
+        let timerLevel = levelOn;    //fix for Level 2 60sec
 
-        //     //console.log(cannonRec.top)
-        //     //console.log(mainRect.bottom)
+        let levelTimer = setInterval(()=>{
 
-        //     //marginTop+=marginTopAdded;
+            const cannonRecTop = MainUI.cannon.getBoundingClientRect().top;
+            const mainRecBottom = MainUI.main.getBoundingClientRect().bottom; 
 
-            if (cannonRec.top <= mainRect.bottom)
+            MainUI.timeTracker (timerLevel)
+
+            if( timerLevel <= 0)
+            {                
+                MainUI.timeTracker( "Congrats Next Level Awaits!" )
+                clearInterval (levelTimer)
+                stopAllShip()
+                levelTwo()
+                gamePlayLevel = 2;
+            }
+
+        /***********************************************************************************
+        Calculate if Collision with Cannon   - GAME OVER  
+        ***********************************************************************************/
+            if (mainRecBottom >= cannonRecTop+85)
             {
-                 //Game Over  fix // wrong rec values
-                clearInterval(levelOneTimer)
-                clearInterval(moveShipTimer)
-                MainUI.timeTracker("Game Over!")
-            }    
- */
+                stopAllShip()
+                clearInterval ( levelTimer )
+            }
 
-// *********************************************************************************************************************************
+            timerLevel -- ;
 
-        let timerLevelOne = 5;    //fix for Level 2 60sec
+        }, secondsPerTimer);
 
-        const levelOneTimer = setInterval(()=>{
 
-            MainUI.timeTracker (timerLevelOne )
+        const levelTwo = () => {
 
-                if( timerLevelOne <= 0)
-                {                
-                    // console.log("Enter 0 Time Tracker")
-                    MainUI.timeTracker( "Congrats Next Level Awaits!" )
-                    clearInterval ( levelOneTimer )//stops timer at 0
+            counter = 0;
+            levelOn = 90;
+            timerLevel = levelOn; 
+            startMovingAllShipsRandomly(15)
+            MainUI.timeTracker(levelOn)
 
-                    //start Level Two //Call level 2 function
+            MainUI.displayQuestionsandAnswer(`-`)
+            
+            let levelTimer = setInterval(()=>{
+
+                const cannonRecTop = MainUI.cannon.getBoundingClientRect().top;
+                const mainRecBottom = MainUI.main.getBoundingClientRect().bottom; 
+    
+                MainUI.timeTracker (timerLevel)
+    
+                if( timerLevel <= 0)
+                {                    
+                    MainUI.timeTracker()
+                    clearInterval (levelTimer)
+                    stopAllShip()
+                    levelThree()
+                    gamePlayLevel = 3;
+
                 }
+    
+            /***********************************************************************************
+            Calculate if Collision with Cannon   - GAME OVER  
+            ***********************************************************************************/
+                if (mainRecBottom >= cannonRecTop+85)
+                {
+                    stopAllShip()
+                    clearInterval ( levelTimer )
+                }
+    
+                timerLevel -- ;
+    
+            }, secondsPerTimer);
 
-            timerLevelOne -- ;
+        }
 
-        }, 1000);
+        const levelThree = () => {
+
+            counter = 0;
+            levelOn = 60;
+            timerLevel = levelOn; 
+            startMovingAllShipsRandomly(15)
+            MainUI.timeTracker(levelOn)
+
+
+            MainUI.displayQuestionsandAnswer(`/`)
+            
+            let levelTimer = setInterval(()=>{
+
+                const cannonRecTop = MainUI.cannon.getBoundingClientRect().top;
+                const mainRecBottom = MainUI.main.getBoundingClientRect().bottom; 
+    
+                MainUI.timeTracker (timerLevel)
+    
+                if( timerLevel <= 0)
+                {                    
+                    MainUI.timeTracker(levelOn)
+                    clearInterval (levelTimer)
+                    stopAllShip()
+                }
+    
+            /***********************************************************************************
+            Calculate if Collision with Cannon   - GAME OVER  
+            ***********************************************************************************/
+                if (mainRecBottom >= cannonRecTop+85)
+                {
+                    stopAllShip()
+                    clearInterval ( levelTimer )
+                }
+    
+                timerLevel -- ;
+    
+            }, secondsPerTimer);
+        } 
+
 // *********************************************************************************************************************************
 
 // *********************************************************************************************************************************
@@ -98,7 +213,7 @@ const app =
                 gridColumnStart = 5;
             }
 
-        // *********************************************************************************************************************************
+            // *********************************************************************************************************************************
             if (event.key == "ArrowLeft" && gridColumnStart >= 1)
             {
                 gridColumnStart -= moveGridColumn;
@@ -121,7 +236,7 @@ const app =
                 Bullet Disappears Upon Impact with Ship
                 Upon Impact :
                     Correct Answer
-                        - Alien is Expelled if Answer is Correct
+                        - Alien/Fireworks is Expelled if Answer is Correct
                         - New Questions Generate
                         - Ships Reset to Starting Position
                         - One Point is Added to Hit Counter
@@ -162,7 +277,7 @@ const app =
 
 
                        }
-                        else  // Wrong Answer
+                        else if ( missleColumnGrid != newQuesandAnswer+1) // Wrong Answer
                         {
                             // console.log (`Wrong Answer chosen`);
                             misses++;
@@ -178,13 +293,26 @@ const app =
 
                         MainUI.removeBullet();//make bullet upon collision disappear+
 
-                        MainUI.impact( bulletPosition, missleColumnGrid); //replace bullet with exploding alien [IF CORRECT!] fix
+                        MainUI.impact(bulletPosition + 150, missleColumnGrid); //replace bullet with exploding [IF CORRECT!] fix
 
                         setTimeout(() => {
                             MainUI.removeExplosion()
                         }, 150)
 
-                        newQuesandAnswer = MainUI.displayQuestionsandAnswer() 
+                        
+
+                        if(gamePlayLevel = 1)
+                        {
+                            newQuesandAnswer = MainUI.displayQuestionsandAnswer(`+`) 
+                        }
+                        else if(gamePlayLevel = 2)
+                        {
+                            newQuesandAnswer = MainUI.displayQuestionsandAnswer(`-`) 
+                        }
+                        else if(gamePlayLevel = 3)
+                        {
+                            newQuesandAnswer = MainUI.displayQuestionsandAnswer(`/`) 
+                        }
 
                         // console.log (`Missle Column Grid = ` + `${missleColumnGrid}`);
                         console.log (`Answer Slot (index + 1) = ` + `${newQuesandAnswer+1}`);

@@ -16,57 +16,79 @@ const MainUI =
         collide :   document.querySelector("#contactWithSship"),
         section :   document.querySelector("section"),
 
-    moveAllSpaceship(counter, addBy)
+    displayQuestionsandAnswer(Operator)
     {
-
-        setInterval(() => {
-            counter += addBy
-            ship1.style.marginTop = (`${counter}px`)
-        },2000);
-    
-        setInterval(() => {
-            ship2.style.marginTop = (`${counter}px`)
-        },1800);
-    
-        setInterval(() => {
-            ship3.style.marginTop = (`${counter}px`)
-        },2500);
-
-        setInterval(() => {
-            ship4.style.marginTop = (`${counter}px`)
-        },2200);
-    
-        setInterval(() => {
-            ship5.style.marginTop = (`${counter}px`)
-        },2350);  
-           
-    },
-
-    displayQuestionsandAnswer()
-    {
+        
         let answerArray = []
 
-        for(let i = 0; i < this.allSShips.length; i++)
-        {   
-            const firstNum = Math.floor(Math.random() * 25) + 1;
-            const secondNum = Math.floor(Math.random() * 9) + 1;
-            const answer = firstNum+secondNum;
-        
-            this.allSShips[i].innerHTML = `${firstNum} + ${secondNum}`;
-
-            if(i == this.allSShips.length)
-            {
-                break;
+        if(Operator == `+`)
+        {
+            for(let i = 0; i < this.allSShips.length; i++)
+            {   
+                const firstNum = Math.floor(Math.random() * 25) + 1;
+                const secondNum = Math.floor(Math.random() * 9) + 1;
+                const answer = firstNum+secondNum;
+            
+                this.allSShips[i].innerHTML = `${firstNum} ${Operator} ${secondNum}`;
+    
+                if(i == this.allSShips.length)
+                {
+                    break;
+                }
+                answerArray.push (answer);
             }
-            answerArray.push (answer);
-        }
 
-        const randomAnswer = Math.floor(Math.random() * 4);
-        const answerChosen = `${answerArray[randomAnswer]}`
-        this.cannon.innerHTML = `${answerChosen}`
+            const randomAnswer = Math.floor(Math.random() * 4);
+            const answerChosen = `${answerArray[randomAnswer]}`
+            this.cannon.innerHTML = `${answerChosen}`
+            return randomAnswer //returns the answer index
+                           
+        }
         
-        return randomAnswer //returns the answer index
-        
+        else if (Operator == `-`)
+        {
+            for(let i = 0; i < this.allSShips.length; i++)
+            {   
+                const firstNum = Math.floor(Math.random() * 25) + 1;
+                const secondNum = Math.floor(Math.random() * 9) + 1;
+                const answer = firstNum+secondNum;
+            
+                this.allSShips[i].innerHTML = `${firstNum} ${Operator} ${secondNum}`;
+    
+                if(i == this.allSShips.length)
+                {
+                    break;
+                }
+                answerArray.push (answer);
+            }
+            const randomAnswer = Math.floor(Math.random() * 4);
+            const answerChosen = `${answerArray[randomAnswer]}`
+            this.cannon.innerHTML = `${answerChosen}`
+            return randomAnswer //returns the answer index
+
+        }
+        else if(Operator == `/`)
+        {
+            for(let i = 0; i < this.allSShips.length; i++)
+            {   
+                const firstNum = Math.floor(Math.random() * 25) + 1;
+                const secondNum = Math.floor(Math.random() * 9) + 1;
+                const answer = firstNum+secondNum;
+            
+                this.allSShips[i].innerHTML = `${firstNum} ${Operator} ${secondNum}`;
+    
+                if(i == this.allSShips.length)
+                {
+                    break;
+                }
+                answerArray.push (answer);
+            }
+            const randomAnswer = Math.floor(Math.random() * 4);
+            const answerChosen = `${answerArray[randomAnswer]}`
+            this.cannon.innerHTML = `${answerChosen}`
+            return randomAnswer //returns the answer index
+            
+        }        
     },
     
     removeShip(x)
@@ -95,7 +117,7 @@ const MainUI =
   
     impact(position, gridColumn)
     {
-        this.collide.style.backgroundImage = `url(/Space_Invasion_Math_Game/img/boom2.png)`;
+        this.collide.style.backgroundImage = `url(/Space_Invasion_Math_Game/img/VZvx.gif`;
         this.collide.style.position = `relative`;
         this.collide.style.bottom = `${position}px`;
         this.collide.style.gridColumn = gridColumn;
