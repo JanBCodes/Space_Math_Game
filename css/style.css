@@ -8,16 +8,122 @@
 body
 { 
     font-family: 'Dancing Script', cursive;
-    background-image: url(/Space_Invasion_Math_Game/img/cosmoplanetbackground.jpg);
+    background-image: url(/Space_Invasion_Math_Game/img/dark\ spce\ bg.jpeg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     background-color: #464646;
+    color: white;
+    height: 100vh;
+}
+
+/* #chooseYourLevel 
+{ 
+    font-family: 'Dancing Script', cursive;
+    background-image: url(/Space_Invasion_Math_Game/img/milkywaybg.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    color: white;
+    height: 100vh;
+} */
+
+h1
+{
+    padding-top: 30px;
+    font-size: 4rem; 
+    text-align: center;
+}
+
+section
+{
+    background-image: url(/Space_Invasion_Math_Game/img/+-.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: block;
+    height: 200px;
    
 }
 
-/* ----------------------------- */
+main
+{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+label
+{
+    font-size: 3rem;
+    text-align: center;
+    font-weight: bold;
+    color: yellow;
+    margin: 0 100px;
+}
+
+input
+{
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    color: yellow;
+    margin: 0 30%;
+    background-color: teal;
+}
+
+button
+{
+    color: black;
+    border-radius: 5px;
+    justify-self: center;
+    font-size: 2rem;
+    margin: 5px 0;
+    padding: 5px 15px;
+    background-color: teal;
+    font-family: 'Dancing Script', cursive;
+}
+
+div
+{
+    color: yellow;
+    padding: 0 10%;
+    justify-self: center;
+    font-size: 2rem;
+    text-align: center;
+}
+
+i
+{
+    border-radius: 20px;
+    background-color: red;
+    padding: 15px 15px;
+    align-self: center;
+    justify-self: center;
+    font-size: 2rem;
+    color: yellow;
+
+}
+
+footer
+{
+    padding-top: 40px;
+    text-align: center;
+    font-size: 2rem;
+
+}
+
+.hide
+{
+    display: none;
+}
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------- */
 #spaceShipsContainer
 {
     display: grid;
@@ -117,7 +223,8 @@ body
     text-align: center;
 }
 
-/* ----------------------------- */
+
+
 /*  Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) { 
 

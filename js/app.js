@@ -2,13 +2,205 @@ import MainUI from "./UI.js"
 
 const app =
 {
+    intro()
+    {
+        const startGamebutton = document.querySelector("#startGamebutton")
+        const viewRulesButton = document.querySelector("#viewRulesbutton")
+        const rulesDisplay = document.querySelector("#displayRules")
+        const musicToggle = document.querySelector("#musicButton")
+        const gameIntro = document.querySelector("body")
+        const playerName = document.querySelector("#playerName")
+        const easy = document.querySelector("#easy")
+        const hard = document.querySelector("#hard")
+
+        let click = `on`;
+
+        gameIntro.innerHTML = this.displayIntroHTML()
+
+        let musicOnOff = true
+        let sound = new Audio();
+
+        sound.src="../audio/music_zapsplat_undercover.mp3";
+        sound.oncanplaythrough = () => {
+
+            sound.readyToPlay = true;
+
+        }
+
+        musicToggle.addEventListener(`click`, () => {
+
+            console.log(sound.readyToPlay)
+
+            if(sound && sound.readyToPlay && musicOnOff) // check for the sound AND if it has loaded AND my flag is TRUE
+            {  
+                sound.currentTime = 5;       // the second I want the audio to start
+                sound.play();                // play the audio I have
+                musicToggle.style.backgroundColor = "green" 
+                musicOnOff = false;
+            }
+            else
+            {
+                sound.pause(); 
+                musicToggle.style.backgroundColor = "red" 
+                musicOnOff = true
+            }
+        })
+
+        startGamebutton.addEventListener("click",() => {
+                
+            gameIntro.innerHTML = this.displayLevelChoiceHTML()
+             
+           // sessionStorage.setItem("Name",`${playerName}`)
+        })
+        
+        easy.addEventListener("click",() => {
+                
+            // sessionStorage.setItem("Level","Easy")
+
+            gameIntro.innerHTML = this.displayMainLevelHTML()              
+
+            this.init()
+        })
+    
+        hard.addEventListener("click", () => {
+            
+            // sessionStorage.setItem("Level","Hard")
+            gameIntro.innerHTML = this.displayMainLevelHTML()
+
+            this.init()
+
+        })
+
+        viewRulesButton.addEventListener("click",() => {
+
+            if (click == `on`)
+            {
+                click = `off`;
+
+                rulesDisplay.innerHTML = `Shoot down the aliens before they get to Earth. 
+                <br> You have to 90secs for Level One (1) and 60secs to complete Level Two (2)
+                <br> The First Level is Addition and the Second Level is Substraction.
+                <br> Good luck!`
+
+            }
+            else if (click == `off`)
+            {
+                click = `on`;
+
+                rulesDisplay.innerHTML = ``;
+
+            }
+
+        })
+
+    },
+
+    displayIntroHTML()
+    {
+        return `        
+            <h1>Space Invasion Math Game</h1>
+
+            <section id="section">
+                
+            </section>
+            <main>
+    
+                <i id="musicButton" class="fas fa-music"></i>
+                <button id="startGamebutton">Start Game</button>
+                <button id="viewRulesbutton" type="button" value="View Rules"> View Rules</button>
+            </main>  
+    
+            <div id="displayRules"> </div> 
+    
+            <footer>
+                Developed by: JanBCodes
+            </footer> `
+
+    },
+
+    displayLevelChoiceHTML()
+    {
+        return `
+            <h1>Space Invasion Math Game</h1>
+
+            <section id="section"> </section>
+
+            <main>
+                <label>Please enter your name:</label>
+                <input id="playerName"type="text">
+                <button id="easy" value="easy">Easy</button>
+                <button id="hard" value="hard">Hard</button>
+            </main>
+
+            <footer>
+                Developed by: JanBCodes
+            </footer> `
+
+    },
+
+    displayMainLevelHTML()
+    {
+        return `
+            <main id="spaceShipsContainer">
+                <div id="ship1" class="ships"> </div>
+                <div id="ship2" class="ships"> </div>
+                <div id="ship3" class="ships"> </div>
+                <div id="ship4" class="ships"> </div>
+                <div id="ship5" class="ships"> </div>
+            </main>
+
+            <div id="cannonContainer">
+                <div id="cannon"> </div>
+            </div>
+
+            <section id="actionContainer">
+               <span id="initialShot"> </span>
+               <span id="contactWithSship"> </span>
+            </section>
+
+            <footer id="currentStats">
+                <div id="timer"></div>
+                <div id="hit"> </div>
+                <div id="miss"></div>
+                <div> Developed by: JanBCodes </div>
+            </footer>`
+        
+    },
+
+    displayMainLevelHTML()
+    {
+        return `
+            <h1>Space Invasion Math Game</h1>
+            <section id="section"></section>
+
+            <main>
+                <h2>Game Summary</h2>
+                <ul>
+                    <li>Name:</li>
+                    <li>Diffculty: </li>
+                    <li>Hits</li>
+                    <li>Misses</li>
+                </ul>
+            </main>
+            
+            <footer>
+                Developed by: JanBCodes
+            </footer>
+        `
+    },
+
+
+/*********************************************************************************************************************************/
+    // Main HTML
+/*********************************************************************************************************************************/
+    
+
     init() //Level One - Addition 90sec
     {   
-        let levelOn = 120; // Start first Level with 90secs
+        let levelOn = 90; // Start first Level with 90secs
         let moveAllSpaceship;
         let counter = 0;
-        let addBy = 0;
-        let secondsPerTimer;;
+        let secondsPerTimer;
         let gamePlayLevel = 1;
         
 
@@ -128,11 +320,10 @@ const app =
     
                 if( timerLevel <= 0)
                 {                    
-                    MainUI.timeTracker()
+                    MainUI.timeTracker( "Your arwe " )
                     clearInterval (levelTimer)
                     stopAllShip()
                     levelThree()
-                    gamePlayLevel = 3;
 
                 }
     
@@ -151,44 +342,6 @@ const app =
 
         }
 
-        const levelThree = () => {
-
-            counter = 0;
-            levelOn = 60;
-            timerLevel = levelOn; 
-            startMovingAllShipsRandomly(15)
-            MainUI.timeTracker(levelOn)
-
-
-            MainUI.displayQuestionsandAnswer(`/`)
-            
-            let levelTimer = setInterval(()=>{
-
-                const cannonRecTop = MainUI.cannon.getBoundingClientRect().top;
-                const mainRecBottom = MainUI.main.getBoundingClientRect().bottom; 
-    
-                MainUI.timeTracker (timerLevel)
-    
-                if( timerLevel <= 0)
-                {                    
-                    MainUI.timeTracker(levelOn)
-                    clearInterval (levelTimer)
-                    stopAllShip()
-                }
-    
-            /***********************************************************************************
-            Calculate if Collision with Cannon   - GAME OVER  
-            ***********************************************************************************/
-                if (mainRecBottom >= cannonRecTop+85)
-                {
-                    stopAllShip()
-                    clearInterval ( levelTimer )
-                }
-    
-                timerLevel -- ;
-    
-            }, secondsPerTimer);
-        } 
 
 // *********************************************************************************************************************************
 
@@ -347,5 +500,5 @@ const app =
         });
     
     },//end of init
-};
-app.init();
+}
+app.intro();
