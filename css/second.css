@@ -8,13 +8,20 @@
 body
 { 
     font-family: 'Dancing Script', cursive;
-    background-image: url(/img/dark\ spce\ bg.jpeg);
+    background-image: url(/img/milkywaybg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     background-color: #464646;
     color: white;
+}
+
+h1
+{
+    margin-top: 30px;
+    font-size: 4rem; 
+    text-align: center;
 }
 
 section
@@ -27,17 +34,33 @@ section
     height: 40vh;
 }
 
-h1
-{
-    margin-top: 30px;
-    font-size: 4rem; 
-    text-align: center;
-}
-
 main
 {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
+    margin: 0 100px;
+}
+
+label
+{
+    font-size: 3rem;
+    text-align: center;
+    font-weight: bold;
+    color: yellow;
+    margin: 0 100px;
+
+
+}
+
+input
+{
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    color: yellow;
+    margin: 0 20%;
+    background-color: teal;
+
 }
 
 button
@@ -45,32 +68,11 @@ button
     color: black;
     border-radius: 5px;
     justify-self: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 5px 0;
-    padding: 5px 15px;
+    padding: 5px 50px;
     background-color: teal;
     font-family: 'Dancing Script', cursive;
-}
-
-div
-{
-    color: yellow;
-    /* padding: 0 5%; */
-    justify-self: center;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-i
-{
-    border-radius: 20px;
-    background-color: red;
-    padding: 15px 15px;
-    align-self: center;
-    justify-self: center;
-    font-size: 2rem;
-    color: yellow;
-
 }
 
 footer
