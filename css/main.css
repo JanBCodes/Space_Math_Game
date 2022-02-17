@@ -7,7 +7,7 @@
 
 body
 { 
-    font-family: 'Dancing Script', cursive;
+    font-family: 'The Nautigal', cursive;
     background-image: url(/img/cosmoplanetbackground.jpg);
     background-position: center center;
     background-repeat: no-repeat;
@@ -32,12 +32,13 @@ body
     background-image: url(/img/3DSS.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    width: 90%;
+    width: 85%;
     min-height: 200px;
-    font-size: 3rem;
-    font-weight: bolder;
-    color: gold;
+    font-size: 4rem;
+    font-weight: bold;
+    color: black;
     text-align: center;
+    /* margin: 5%; */
 }
 
 /* ----------------------------- */
@@ -57,13 +58,15 @@ body
     background-image: url(/img/Gun.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    width:80px;
+    width:70px;
     height: 150px;
     font-size: 3.5rem;
     font-weight: bolder;
     color: #21d8df;
     grid-column-start: 3;
-    text-align: center    
+    text-align: center;
+    position: relative;
+
 }
 
 #actionContainer

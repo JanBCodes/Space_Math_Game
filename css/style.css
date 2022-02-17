@@ -7,7 +7,8 @@
 
 body
 { 
-    font-family: 'Dancing Script', cursive;
+    /* font-family: 'Dancing Script', cursive; */
+    font-family: 'The Nautigal', cursive;
     background-image: url(/img/dark\ spce\ bg.jpeg);
     background-position: center center;
     background-repeat: no-repeat;
@@ -49,7 +50,9 @@ button
     margin: 5px 0;
     padding: 5px 15px;
     background-color: teal;
-    font-family: 'Dancing Script', cursive;
+    /* font-family: 'Dancing Script', cursive; */
+    font-family: 'The Nautigal', cursive;
+
 }
 
 div

@@ -10,6 +10,9 @@ const app =
         let addBy = 0;
         let secondsPerTimer;;
         let gamePlayLevel = 1;
+        let hits = 0;
+        let misses = 0;
+
         
 
         let newQuesandAnswer = MainUI.displayQuestionsandAnswer(`+`) //returns answer index or sShip index
@@ -104,9 +107,14 @@ const app =
             {
                 stopAllShip()
                 clearInterval ( levelTimer )
+
+                // sessionStorage.setItem("Hits",`${Hits}`)
+                // sessionStorage.setItem("Misses",`${Misses}`)
+
+                // location.href = "./html/summary.html"
             }
 
-            timerLevel -- ;
+            timerLevel -- ;           
 
         }, secondsPerTimer);
 
@@ -257,8 +265,8 @@ const app =
 
                     let spaceShipBottomRec = MainUI.main.getBoundingClientRect(); //must stay in setInterval to be recalculated with every loop
                     let bulletRec = MainUI.bullet.getBoundingClientRect(); //must stay in setInterval to be recalculated with every loop
-                    let hits = 0;
-                    let misses = 0;
+                    // let hits = 0;
+                    // let misses = 0;
 
                     MainUI.fireCannon(missleColumnGrid, bulletPosition)
 
@@ -276,7 +284,6 @@ const app =
                             hits++;
                             // console.log(hits)
                             MainUI.addHits(hits)
-
 
                        }
                         else if ( missleColumnGrid != newQuesandAnswer+1) // Wrong Answer
