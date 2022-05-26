@@ -4,11 +4,11 @@ const app =
 {
     init() //Level One - Addition 90sec
     {   
-        let levelOn = 120; // Start first Level with 90secs
+        let levelOn = 5; // Start first Level with 90secs
         let moveAllSpaceship;
         let counter = 0;
         let addBy = 0;
-        let secondsPerTimer;;
+        let secondsPerTimer;
         let gamePlayLevel = 1;
         let hits = 0;
         let misses = 0;
@@ -28,12 +28,14 @@ const app =
 
             if (playerDifficultySet == "Hard")
             {
-                secondsPerTimer = 500
+                secondsPerTimer = 500;
             }
             else if (playerDifficultySet == "Easy")
             {
                 secondsPerTimer = 1000
             }
+
+            MainUI.level.innerHTML = "Level: " + playerDifficultySet
 
             // console.log(playerDifficultySet)
         }
@@ -49,7 +51,7 @@ const app =
 
                 setInterval(() => {
                     counter += addBy
-                    MainUI.ship1.style.marginTop = (`${counter}px`)
+                    MainUI.ship1.style.marginTop = (`${counter}px`);
                 },2000);
 
                 setInterval(() => {
@@ -108,10 +110,10 @@ const app =
                 stopAllShip()
                 clearInterval ( levelTimer )
 
-                // sessionStorage.setItem("Hits",`${Hits}`)
-                // sessionStorage.setItem("Misses",`${Misses}`)
+                sessionStorage.setItem("Hits",`${hits}`)
+                sessionStorage.setItem("Misses",`${misses}`)
 
-                // location.href = "./html/summary.html"
+                location.href = "./html/summary.html"
             }
 
             timerLevel -- ;           
@@ -122,7 +124,7 @@ const app =
         const levelTwo = () => {
 
             counter = 0;
-            levelOn = 60;
+            levelOn = 45;
             timerLevel = levelOn; 
             startMovingAllShipsRandomly(15)
             MainUI.timeTracker(levelOn)
@@ -257,7 +259,7 @@ const app =
                         - One Point is Added to Miss Counter
 
             ***********************************************************************************/
-                let bulletPosition = 0;
+                let bulletPosition = -35;
                 
                 const missleColumnGrid = gridColumnStart;
 
@@ -308,17 +310,15 @@ const app =
                             MainUI.removeExplosion()
                         }, 150)
 
-                        
-
-                        if(gamePlayLevel = 1)
+                        if(gamePlayLevel === 1)
                         {
                             newQuesandAnswer = MainUI.displayQuestionsandAnswer(`+`) 
                         }
-                        else if(gamePlayLevel = 2)
+                        else if(gamePlayLevel === 2)
                         {
                             newQuesandAnswer = MainUI.displayQuestionsandAnswer(`-`) 
                         }
-                        else if(gamePlayLevel = 3)
+                        else if(gamePlayLevel === 3)
                         {
                             newQuesandAnswer = MainUI.displayQuestionsandAnswer(`/`) 
                         }
@@ -338,11 +338,11 @@ const app =
 
                     If Correct Answer
                         Regenerate SShips Positions to Start & New Questions
-                        Update Hits
+                        Update Hits - done
 
                     If Wrong Answer
                         Regenerate Questions
-                        Update Misses 
+                        Update Misses - done
                         
                     Calculate if Collision with Cannon   - GAME OVER  
 

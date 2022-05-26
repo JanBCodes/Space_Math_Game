@@ -1,0 +1,33 @@
+/* 360px = 23em
+692px = 43em
+
+1366 = 85em - 14inch HP Elitebook
+1614px = 101em
+
+BS Breakpoints
+X-Small	None	<576px
+Small	sm	≥576px
+Medium	md	≥768px
+Large	lg	≥992px
+Extra large	xl	≥1200pxExtra extra large	xxl	≥1400px */
+
+
+@media (min-width: 315.99px) and (max-width: 767.9px) {
+
+
+
+   
+}
+
+
+
+
+
+
+
+/*  */
+@media (min-width: 768px) and (max-width: 1199.99px) {
+
+
+   
+}

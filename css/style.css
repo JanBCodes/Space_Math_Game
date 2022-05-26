@@ -5,7 +5,7 @@
     box-sizing: border-box;   
 }
 
-body
+.homePage
 { 
     /* font-family: 'Dancing Script', cursive; */
     font-family: 'The Nautigal', cursive;
@@ -18,7 +18,7 @@ body
     color: white;
 }
 
-section
+.homePage section
 {
     background-image: url(/img/+-.png);
     background-repeat: no-repeat;
@@ -28,20 +28,20 @@ section
     height: 40vh;
 }
 
-h1
+.homePage h1
 {
     margin-top: 30px;
     font-size: 4rem; 
     text-align: center;
 }
 
-main
+.homePage main
 {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
 }
 
-button
+.homePage button
 {
     color: black;
     border-radius: 5px;
@@ -55,16 +55,16 @@ button
 
 }
 
-div
+.homePage div
 {
     color: yellow;
-    /* padding: 0 5%; */
+    padding: 0 5%;
     justify-self: center;
     font-size: 1.5rem;
     text-align: center;
 }
 
-i
+.homePage i
 {
     border-radius: 20px;
     background-color: red;
@@ -76,10 +76,140 @@ i
 
 }
 
-footer
+.homePage footer
 {
     margin-top: 20px;
     text-align: center;
     font-size: 2rem; 
+}
+
+/*>>>>>>>>>>>>>>>>>> Main Game Play >>>>>>>>>>>>>>> 
+>>>>>>>>>>>>>>>>>> Main Game Play >>>>>>>>>>>>>>>  */
+#main
+{ 
+    font-family: 'The Nautigal', cursive;
+    background-image: url(/img/cosmoplanetbackground.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;   
+}
+
+/* ----------------------------- */
+#spaceShipsContainer
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    width: 100vw;
+    padding-top: 20px;
+}
+
+.ships
+{
+    background-image: url(/img/3DSS.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 85%;
+    min-height: 200px;
+    font-size: 4rem;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.questionContainer
+{
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 3.5rem;
+    margin: 0 25%;
+    font-weight: 800;
+    color: aliceblue;
+    border-radius: 20px;
+}
+
+#cannonContainer
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    width: 100vw;
+    position: absolute;
+    bottom: 0px;      
+    color: #e6fb00;
+}
+
+#cannon
+{
+    background-image: url(/img/Gun.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width:70px;
+    height: 150px;
+    font-size: 3.5rem;
+    font-weight: bolder;
+    grid-column-start: 3;
+    text-align: center;
+    position: relative;
+}
+
+#answerContainer
+{
+    background-color: rgba(0, 0, 0, .5);
+    font-size: 5rem;
+    padding: 0 0;
+    margin-top: 30px;
+    border-radius: 5%
+}
+
+#actionContainer
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    width: 100vw;
+    position: absolute;
+    bottom: 0px;  
+}
+
+#initialShot
+{   
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55px;
+    height: 60px;
+    position: relative;
+    bottom: 0px;
+}
+
+#contactWithSship
+{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 200px;
+    min-height: 300px;
+    justify-items: center;
+}
+
+/* ----------------------------- */
+#currentStats /* Footer */
+{
+    background-color: teal;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-content: center;
+    position: absolute ;
+    bottom: 0px;
+    border-style: double;
+    width: 100%;
+}
+
+#currentStats > div
+{
+    padding: 0px 10px;
+    color: black;
+    font-size: 1.5rem;
+    text-align: center;
 }
 

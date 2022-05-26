@@ -3,23 +3,35 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/main.css">
-		<link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap" rel="stylesheet">
-        <script src="../js/main/app.js" type="module"> </script> 
-        <title>Space Invasion - Main</title>
+        <link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/media.css">
+        <title>Space Invasion || Main</title>
     </head>
-    <body id="body">
+    <body id="main">
 
         <main id="spaceShipsContainer">
-            <div id="ship1" class="ships"> </div>
-            <div id="ship2" class="ships"> </div>
-            <div id="ship3" class="ships"> </div>
-            <div id="ship4" class="ships"> </div>
-            <div id="ship5" class="ships"> </div>
+            <div id="ship1" class="ships">
+                <div class="questionContainer" > </div> 
+            </div>
+            <div id="ship2" class="ships"> 
+                <div class="questionContainer" > </div> 
+            </div>
+            <div id="ship3" class="ships"> 
+                <div class="questionContainer" > </div> 
+            </div>
+            <div id="ship4" class="ships"> 
+                <div class="questionContainer" > </div> 
+            </div>
+            <div id="ship5" class="ships"> 
+                <div class="questionContainer" > </div> 
+            </div>
         </main>
               
         <div id="cannonContainer">
-            <div id="cannon"> </div>
+            <div id="cannon"> 
+                <div id="answerContainer" > </div> 
+            </div>
         </div>
     
         <section id="actionContainer">
@@ -28,11 +40,13 @@
         </section>
 
         <footer id="currentStats">
-            <div id="timer"></div>
-            <div id="hit"> </div>
-            <div id="miss"></div>
+            <div id="timer">Timer: - </div>
+            <div id="level">Level: </div>
+            <div id="hit">Hits: 0 </div>
+            <div id="miss"> Missed: 0</div>
             <div> Developed by: JanBCodes </div>
         </footer>
 
+        <script src="../js/main/app.js" type="module"> </script> 
     </body>
 </html>
